@@ -1,0 +1,31 @@
+server:
+  port: 8090
+
+env:
+  flag: ${env.flag}
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${jdbc.app.url}
+    username: ${jdbc.app.username}
+    password: ${jdbc.app.password}
+    initial-size: 15
+    maximum-pool-size: 30
+    test-while-idle: true
+    time-between-eviction-runs-millis: 300000
+    validation-query: SELECT 1
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  #Ò³ÃæÄ£°å
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
