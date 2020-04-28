@@ -6,10 +6,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hjs.startdemo.common.view.JsonResult;
 import com.hjs.startdemo.common.view.LoginUser;
 import com.hjs.startdemo.common.view.ReturnCode;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,8 +17,12 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class BaseController {
+
+    @Autowired
     protected HttpServletRequest request;
+    @Autowired
     protected HttpServletResponse response;
+    @Autowired
     protected HttpSession session;
 
     public BaseController() {
@@ -31,13 +35,6 @@ public class BaseController {
         return loginUser;
     }
 
-
-    @ModelAttribute
-    public void setReqAndRes(HttpServletRequest request, HttpServletResponse response) {
-        this.request = request;
-        this.response = response;
-        this.session = request.getSession();
-    }
 
     public ResponseEntity<JsonResult> returnJsonResult(JsonResult result){
         return new ResponseEntity(result, HttpStatus.OK);
