@@ -21,7 +21,7 @@ spring:
       enabled: true
       max-file-size: 100MB
       max-request-size: 100MB
-  #Ò³ÃæÄ£°å
+  #
   thymeleaf:
     prefix: classpath:/templates/
     mode: HTML5

@@ -1,7 +1,5 @@
 package com.hjs.startdemo.common;
 
-
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hjs.startdemo.common.view.JsonResult;
 import com.hjs.startdemo.common.view.LoginUser;
