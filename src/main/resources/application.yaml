@@ -18,9 +18,9 @@ spring:
     validation-query: SELECT 1
   servlet:
     multipart:
-      enabled: true
       max-file-size: 100MB
       max-request-size: 100MB
+      enabled: on
   #
   thymeleaf:
     prefix: classpath:/templates/
@@ -29,3 +29,7 @@ spring:
     cache: false
     servlet:
       content-type: text/html
+
+logging:
+  level:
+    root: info

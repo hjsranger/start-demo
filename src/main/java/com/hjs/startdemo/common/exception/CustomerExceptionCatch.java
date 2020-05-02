@@ -2,6 +2,7 @@ package com.hjs.startdemo.common.exception;
 
 import com.hjs.startdemo.common.view.JsonResult;
 import com.hjs.startdemo.common.view.ResultCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 异常统一处理
  */
+@Slf4j
 @ControllerAdvice
 public class CustomerExceptionCatch {
 
@@ -32,7 +34,7 @@ public class CustomerExceptionCatch {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public JsonResult exceptionHanlder(Exception e){
-        System.out.println(e.getMessage());
+        log.error("异常：" + e.getMessage());
         return new JsonResult(ResultCode.UNKNOWNERROR);
     }
 

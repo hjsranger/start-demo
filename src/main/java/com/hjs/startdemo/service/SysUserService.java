@@ -26,7 +26,7 @@ public class SysUserService {
 
     public List<SysUser> queryList(){
         if(true){
-            // int a = 1/0;
+            int a = 1/0;
             ExceptionCast.cast(ResultCode.UNKNOWNERROR);
         }
         return sysUserMapper.selectList(new QueryWrapper<>());
