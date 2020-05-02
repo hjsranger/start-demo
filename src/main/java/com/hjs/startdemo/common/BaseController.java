@@ -3,10 +3,8 @@ package com.hjs.startdemo.common;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hjs.startdemo.common.view.JsonResult;
 import com.hjs.startdemo.common.view.LoginUser;
-import com.hjs.startdemo.common.view.ReturnCode;
+import com.hjs.startdemo.common.view.ResultCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,46 +32,38 @@ public class BaseController {
     }
 
 
-    public ResponseEntity<JsonResult> returnJsonResult(JsonResult result){
-        return new ResponseEntity(result, HttpStatus.OK);
+    public JsonResult returnJsonResult(JsonResult result){
+        return result;
     }
 
-    public ResponseEntity<JsonResult> wrapperJsonResult(Object result) {
-        JsonResult jsonResult = new JsonResult();
-        jsonResult.setCode(ReturnCode.SUCCESS);
-        jsonResult.setReturnMessage("SUCCESS");
+    public JsonResult wrapperJsonResult(Object result) {
+        JsonResult jsonResult = new JsonResult(ResultCode.SUCCESS);
         jsonResult.setData(result);
-        return new ResponseEntity(jsonResult, HttpStatus.OK);
+        return jsonResult;
     }
 
-    public ResponseEntity<JsonResult> wrapperPageResult(IPage page) {
-        JsonResult jsonResult = new JsonResult();
-        jsonResult.setCode(ReturnCode.SUCCESS);
-        jsonResult.setReturnMessage("SUCCESS");
+    public JsonResult wrapperPageResult(IPage page) {
+        JsonResult jsonResult = new JsonResult(ResultCode.SUCCESS);
         jsonResult.setData(page.getRecords());
         jsonResult.setCount(page.getTotal());
-        return new ResponseEntity(jsonResult, HttpStatus.OK);
+        return jsonResult;
     }
 
-    public ResponseEntity<JsonResult> returnSuccessJson(String message) {
-        JsonResult jsonResult = new JsonResult();
-        jsonResult.setCode(ReturnCode.SUCCESS);
+    public JsonResult returnSuccessJson(String message) {
+        JsonResult jsonResult = new JsonResult(ResultCode.SUCCESS);
         jsonResult.setReturnMessage(message);
-        return new ResponseEntity(jsonResult, HttpStatus.OK);
+        return jsonResult;
     }
 
-    public ResponseEntity<JsonResult> returnSuccessJson() {
+    public JsonResult returnSuccessJson() {
         JsonResult jsonResult = new JsonResult();
-        jsonResult.setCode(ReturnCode.SUCCESS);
-        jsonResult.setReturnMessage("SUCCESS");
-        return new ResponseEntity(jsonResult, HttpStatus.OK);
+        return jsonResult;
     }
 
-    public ResponseEntity<JsonResult> returnErrorJson(String message) {
-        JsonResult jsonResult = new JsonResult();
-        jsonResult.setCode(ReturnCode.ERROR);
+    public JsonResult returnErrorJson(String message) {
+        JsonResult jsonResult = new JsonResult(ResultCode.FAIL);
         jsonResult.setReturnMessage(message);
-        return new ResponseEntity(jsonResult, HttpStatus.OK);
+        return jsonResult;
     }
 
 

@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class JsonResult<T> {
 
-    private ReturnCode code;
+    private boolean success;
+
+    private long code;
 
     private String returnMessage;
 
@@ -15,7 +17,13 @@ public class JsonResult<T> {
 
     public JsonResult(){}
 
-    public JsonResult(ReturnCode code, T data, Long count) {
+    public JsonResult(ResultCode resultCode){
+        this.success = resultCode.success;
+        this.code = resultCode.code;
+        this.returnMessage = resultCode.message;
+    }
+
+    public JsonResult(Integer code, T data, Long count) {
         this.code = code;
         this.data = data;
         this.count = count;

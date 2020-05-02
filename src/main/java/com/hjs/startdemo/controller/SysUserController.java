@@ -30,14 +30,9 @@ public class SysUserController extends BaseController {
     private SysUserService sysUserService;
 
     @GetMapping("/query")
-    public ResponseEntity<JsonResult> query() {
-        try {
-            List<SysUser> list = sysUserService.queryList();
-            return wrapperJsonResult(list);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return returnErrorJson("ERROR");
+    public JsonResult query() {
+        List<SysUser> list = sysUserService.queryList();
+        return wrapperJsonResult(list);
     }
 
 }
